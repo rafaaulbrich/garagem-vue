@@ -5,14 +5,14 @@ const acessoriosApi = new AcessoriosApi();
 
 const defaultAcessorio = { id: null, descricao: "" };
 const acessorios = ref([]);
-const acessorio = reactive({ ...defaultacessorio });
+const acessorio = reactive({ ...defaultAcessorio });
 
 onMounted(async () => {
-  acessorios.value = await acessoriosApi.buscarTodasOsAcessorios();
+  acessorios.value = await acessoriosApi.buscarTodosOsAcessorios();
 });
 
 function limpar() {
-  Object.assign(acessorio, { ...defaultacessorio });
+  Object.assign(acessorio, { ...defaultAcessorio });
 }
 
 async function salvar() {
@@ -21,7 +21,7 @@ async function salvar() {
   } else {
     await acessoriosApi.adicionarAcessorio(acessorio);
   }
-  acessorios.value = await acessoriosApi.buscarTodasOsAcessorios();
+  acessorios.value = await acessoriosApi.buscarTodosOsAcessorios();
   limpar();
 }
 
@@ -31,7 +31,7 @@ function editar(acessorio_para_editar) {
 
 async function excluir(id) {
   await acessoriosApi.excluirAcessorio(id);
-  acessorios.value = await acessoriosApi.buscarTodasOsAcessorios();
+  acessorios.value = await acessoriosApi.buscarTodosOsAcessorios();
   limpar();
 }
 </script>
